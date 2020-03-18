@@ -1,0 +1,19 @@
+{
+  "name": "jsonix-lambda",
+  "version": "1.0.0",
+  "description": "JAXB NodeJS Alternative POC",
+  "main": "handler.js",
+  "dependencies": {
+    "jsonix": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jaxb",
+    "jsonix"
+  ],
+  "author": "Diego Bareño",
+  "license": "MIT"
+}
