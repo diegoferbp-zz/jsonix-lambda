@@ -9,7 +9,7 @@
 # For full config options, check the docs:
 #    docs.serverless.com
 #
-# Happy Coding!
+# Happy Coding
 
 service: jsonix-lambda
 # app and org for use with dashboard.serverless.com
@@ -23,27 +23,32 @@ service: jsonix-lambda
 provider:
   name: aws
   runtime: nodejs12.x
-  profile: diegoferbp
+  profile: poc
+  timeout: 60
+  deploymentBucket:
+    name: diegoferbp-myaws-poc-infra-us-east-1
+
 
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:ListBucket"
+      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", "${self:provider.deploymentBucket}" ] ]  }
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+        - "s3:GetObject"
+      Resource:
+        Fn::Join:
+          - ""
+          - - "arn:aws:s3:::"
+            - "${self:provider.deploymentBucket}"
+            - "/*"
 
 # you can define service wide environment variables here
 #  environment:
@@ -61,6 +66,13 @@ provider:
 functions:
   hello:
     handler: handler.hello
+    memorySize: 128
+  unmarshallerXml2Json:
+    handler: handler.unmarshallerXml2Json
+    memorySize: 128
+  unmarshallerXml2Js:
+    handler: handler.unmarshallerXml2Js
+    memorySize: 128
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -112,3 +124,6 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+plugins:
+  - serverless-prune-plugin

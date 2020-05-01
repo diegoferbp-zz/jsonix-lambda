@@ -1,19 +1,23 @@
 {
-  "name": "jsonix-lambda",
-  "version": "1.0.0",
-  "description": "JAXB NodeJS Alternative POC",
-  "main": "handler.js",
-  "dependencies": {
-    "jsonix": "^3.0.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "jaxb",
-    "jsonix"
-  ],
-  "author": "Diego Bareño",
-  "license": "MIT"
+    "name": "jsonix-lambda",
+    "version": "1.0.0",
+    "description": "JAXB NodeJS Alternative POC",
+    "main": "handler.js",
+    "dependencies": {
+        "aws-sdk": "^2.642.0",
+        "xml2js": "^0.4.23",
+        "xml2json": "^0.12.0"
+    },
+    "devDependencies": {
+        "serverless-prune-plugin": "^1.4.2"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "jaxb",
+        "jsonix"
+    ],
+    "author": "Diego Bareño",
+    "license": "MIT"
 }
