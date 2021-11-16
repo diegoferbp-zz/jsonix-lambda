@@ -4,7 +4,7 @@
     "description": "JAXB NodeJS Alternative POC",
     "main": "handler.js",
     "dependencies": {
-        "aws-sdk": "^2.642.0",
+        "aws-sdk": "^2.814.0",
         "xml2js": "^0.4.23",
         "xml2json": "^0.12.0"
     },
